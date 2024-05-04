@@ -21,3 +21,6 @@ mongodb.initDb((err, mongodb) => {
     console.log(`Connected to DB and listening on ${port}`);
   }
 });
+
+
+//reminder: use node app.js to verify if it's running
