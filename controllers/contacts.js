@@ -29,4 +29,35 @@ const getSingle = async (req, res, next) => {
   }
 };
 
-module.exports = { getAll, getSingle };
+const createContact = async (req, res, next) => {
+  try {
+    const { name, email, phone } = req.body;
+
+    // Validate input data
+    if (!name || !email || !phone) {
+      return res.status(400).json({ error: 'Name, email, and phone are required fields' });
+    }
+
+    // Create new contact object
+    const newContact = {
+      name,
+      email,
+      phone
+    };
+
+    // Insert new contact into the database
+    const result = await mongodb.getDb().db().collection('contacts').insertOne(newContact);
+
+    // Extract the ID of the newly created contact
+    const newContactId = result.insertedId;
+
+    // Send the ID of the newly created contact and a 201 status
+    res.status(201).json({ id: newContactId });
+  } catch (error) {
+    console.error('Error creating contact:', error);
+    res.status(500).json({ error: 'Failed to create contact' });
+  }
+};
+
+
+module.exports = { getAll, getSingle, createContact };
