@@ -15,3 +15,16 @@ Content-Type: application/json
   "email": "john@example.com",
   "phone": "1234567890"
 }
+
+###
+PUT http://localhost:8080/contacts/663f8c1e0f4f2794fb21cd93
+Content-Type: application/json
+
+{
+  "name": "Updated Name",
+  "email": "updated@example.com",
+  "phone": "123-456-7890"
+}
+
+###
+DELETE http://localhost:8080/contacts/663f8a80459cfe349b856f08
