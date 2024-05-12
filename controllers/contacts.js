@@ -17,10 +17,24 @@ const getSingle = async (req, res, next) => {
     const userId = new ObjectId(req.params.id);
     const contactsCollection = mongodb.getDb().db().collection('contacts');
     const contact = await contactsCollection.findOne({ _id: userId });
+
+    console.log('Retrieved contact:', contact);
+
     if (!contact) {
       return res.status(404).json({ error: 'Contact not found' });
     }
-    res.json(contact);
+
+    // Include favorite color and birthday in the response
+    const contactData = {
+      _id: contact._id,
+      name: contact.name,
+      email: contact.email,
+      phone: contact.phone,
+      favoriteColor: contact.favoriteColor,
+      birthday: contact.birthday 
+    };
+
+    res.json(contactData);
   } catch (error) {
     console.error('Error fetching contact:', error);
     res.status(500).json({ error: 'Failed to fetch contact' });
@@ -90,3 +104,5 @@ const deleteContact = async (req, res, next) => {
 
 
 module.exports = { getAll, getSingle, createContact, updateContact, deleteContact };
+
+

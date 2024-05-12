@@ -11,19 +11,26 @@ POST http://localhost:8080/contacts
 Content-Type: application/json
 
 {
-  "name": "John Doe",
-  "email": "john@example.com",
-  "phone": "1234567890"
+  "name": "Chris Evans",
+  "email": "cEvans@test.com",
+  "phone": "1234567890",
+  "favoriteColor": "Blue",
+  "birthday": "06/13/1981"
 }
+###
+GET http://localhost:8080/contacts/66401ba1ece33d2fdb5d11ff
 
 ###
-PUT http://localhost:8080/contacts/663f8c1e0f4f2794fb21cd93
+PUT http://localhost:8080/contacts/66401ba1ece33d2fdb5d11ff
 Content-Type: application/json
 
 {
-  "name": "Updated Name",
-  "email": "updated@example.com",
-  "phone": "123-456-7890"
+   "name": "Chris Evans",
+  "email": "cEvans@test.com",
+  "phone": "1234567891",
+  "favoriteColor": "Blue",
+  "birthday": "06/13/1981"
+
 }
 
 ###
