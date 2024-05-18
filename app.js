@@ -7,12 +7,20 @@ const port = process.env.PORT || 8080;
 const app = express();
 
 app
-  .use(bodyParser.json())
+  .use(bodyParser.json())  // Parses JSON request bodies
   .use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    next();
+    // Sets various headers to handle CORS and content type
+    res.setHeader('Access-Control-Allow-Origin', 'https://cs341-node-fs2024.onrender.com');
+    res.setHeader(
+      'Access-Control-Allow-Headers',
+      'origin, X-Requested-with, Content-Type, Accept, Z-Key'
+    );
+    res.setHeader('Content-Type', 'application/json');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    next();  // Passes control to the next middleware
   })
-  .use('/', require('./routes'));
+  .use('/', require('./routes'));  // Routes for handling different endpoints
+
 
 mongodb.initDb((err) => {
   if (err) {
