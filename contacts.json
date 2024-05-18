@@ -1,22 +1,22 @@
 [
     {
-      "firstName": "Alice",
-      "lastName": "Smith",
+      "name": "Alice Smith",
       "email": "alice.smith@example.com",
+      "phone": "1234567895",
       "favoriteColor": "green",
       "birthday": "1985-10-15"
     },
     {
-      "firstName": "Bob",
-      "lastName": "Johnson",
+      "name": "Bob Johnson",
       "email": "bob.johnson@example.com",
+      "phone": "1234567895",
       "favoriteColor": "red",
       "birthday": "1978-03-25"
     },
     {
-      "firstName": "Emily",
-      "lastName": "Brown",
+      "name": "Emily Brown",
       "email": "emily.brown@example.com",
+      "phone": "1234567895",
       "favoriteColor": "purple",
       "birthday": "1995-07-08"
     }

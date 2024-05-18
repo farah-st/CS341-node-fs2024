@@ -1,37 +1,38 @@
-GET http://localhost:8080/contacts
 ###
-GET http://localhost:8080/contacts/66343a7d3815be2afb1cede0
+GET http://localhost:8080/api-docs
 ###
-GET http://localhost:8080/contacts/66343a7d3815be2afb1cede1
+GET http://localhost:8080/contacts/66469af6c0d8a23c38387e1c
 ###
-GET http://localhost:8080/contacts/66343a7d3815be2afb1cede2
+GET http://localhost:8080/contacts/66469b47c0d8a23c38387e1d
+###
+GET http://localhost:8080/contacts/66469be5c0d8a23c38387e1e
 
 ###
 POST http://localhost:8080/contacts
 Content-Type: application/json
 
 {
-  "name": "Chris Evans",
-  "email": "cEvans@test.com",
-  "phone": "1234567890",
-  "favoriteColor": "Blue",
-  "birthday": "06/13/1981"
+  "firstName": "Scarlett",
+  "lastName": "Johansson",
+  "email": "johanssonS2@test.com",
+  "favoriteColor": "Black",
+  "birthday": "11/22/1984"
+
 }
-###
-GET http://localhost:8080/contacts/66401ba1ece33d2fdb5d11ff
+
 
 ###
-PUT http://localhost:8080/contacts/66401ba1ece33d2fdb5d11ff
+PUT http://localhost:8080/contacts/66469b47c0d8a23c38387e1d
 Content-Type: application/json
 
 {
-   "name": "Chris Evans",
-  "email": "cEvans@test.com",
-  "phone": "1234567891",
-  "favoriteColor": "Blue",
-  "birthday": "06/13/1981"
+  "firstName": "Robert",
+  "lastName": "Downey Jr.",
+  "email": "Rdowny@test.com",
+  "favoriteColor": "Red",
+  "birthday": "04/04/1965"
 
 }
 
 ###
-DELETE http://localhost:8080/contacts/663f8a80459cfe349b856f08
+DELETE http://localhost:8080/contacts/66469d87c0d8a23c38387e20
