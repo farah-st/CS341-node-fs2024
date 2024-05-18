@@ -1,34 +1,31 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-const mongodb = require('./db/connect');
+const cors = require('cors');
+const mongodb = require('./db/connect'); // Adjust the path if needed
+const contactsRoutes = require('./routes/contacts'); // Adjust the path if needed
 
-
-const port = process.env.PORT || 8080;
 const app = express();
 
-app
-  .use(bodyParser.json())  // Parses JSON request bodies
-  .use((req, res, next) => {
-    // Sets various headers to handle CORS and content type
-    res.setHeader('Access-Control-Allow-Origin', 'https://cs341-node-fs2024.onrender.com');
-    res.setHeader(
-      'Access-Control-Allow-Headers',
-      'origin, X-Requested-with, Content-Type, Accept, Z-Key'
-    );
-    res.setHeader('Content-Type', 'application/json');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    next();  // Passes control to the next middleware
-  })
-  .use('/', require('./routes'));  // Routes for handling different endpoints
+// Use CORS middleware
+app.use(cors({
+  origin: 'https://cse341-contacts-frontend.netlify.app'
+}));
 
+// Middleware to parse JSON bodies
+app.use(express.json());
 
+// Use contacts routes
+app.use('/contacts', contactsRoutes);
+
+// Connect to the database and start the server
+const PORT = process.env.PORT || 8080;
 mongodb.initDb((err) => {
   if (err) {
-    console.log(err);
+    console.error('Failed to connect to the database', err);
   } else {
-    app.listen(port);
-    console.log(`Connected to DB and listening on ${port}`);
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
   }
 });
 
-//reminder: use node app.js to verify if it's running
+module.exports = app;
