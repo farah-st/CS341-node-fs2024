@@ -1,6 +1,8 @@
 ###
 GET http://localhost:8080/api-docs
 ###
+GET http://localhost:8080/contacts/
+###
 GET http://localhost:8080/contacts/66469af6c0d8a23c38387e1c
 ###
 GET http://localhost:8080/contacts/66469b47c0d8a23c38387e1d
@@ -35,4 +37,4 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:8080/contacts/66469d87c0d8a23c38387e20
+DELETE http://localhost:8080/contacts/6649539f7f4bca0b63dc36be
